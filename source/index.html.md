@@ -1,10 +1,9 @@
 ---
-title: API Reference
+title: TaxCloud Developer Center
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
+  - csharp
   - javascript
 
 toc_footers:
@@ -12,6 +11,9 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - about
+  - reference
+  - guides
   - errors
 
 search: true
@@ -19,13 +21,13 @@ search: true
 code_clipboard: true
 ---
 
-# Introduction
+<!-- # Introduction
 
 [TaxCloud](https://taxcloud.com) is the internet's only free sales tax compliance service. We can provide TaxCloud at no cost to retailers because we are paid by the states to make sales tax compliance as easy as possible—it's just that simple.
 
-OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These "Member States" pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification.
+OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These "Member States" pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification. -->
 
-# Authentication
+<!-- # Authentication
 
 > To authorize, use this code:
 
@@ -236,4 +238,4 @@ This endpoint deletes a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
-
+ -->
