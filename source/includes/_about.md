@@ -1,4 +1,4 @@
-# About TaxCloud
+# Introduction
 <a href="https://taxcloud.com" target="_blank">TaxCloud</a> is the internet's only free sales tax compliance service. We can provide TaxCloud at no cost to retailers because we are paid by the states to make sales tax compliance as easy as possible—it's just that simple.
 
 OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These "Member States" pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification.

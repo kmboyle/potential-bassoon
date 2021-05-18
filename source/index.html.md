@@ -12,7 +12,11 @@ toc_footers:
 
 includes:
   - about
-  - reference
+  - getting-started
+  - getting-fancy
+  - exemption-certificates
+  - taxability-codes
+  - platform-partner-apis
   - guides
   - errors
 

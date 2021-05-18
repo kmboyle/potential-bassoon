@@ -7,11 +7,10 @@ Our PING API is typically used to ensure API credentials are valid, and to ensur
 
 
 ```shell
-curl "https://api.taxcloud.net/1.0/TaxCloud/Ping" \
-  -H "Authorization: meowmeowmeow"
+curl "https://api.taxcloud.net/1.0/TaxCloud/Ping"
 ```
 
-```csharp
+<!-- ```csharp
 const req = '';
 ```
 
@@ -20,7 +19,7 @@ const kittn = require('kittn');
 
 let api = kittn.authorize('meowmeowmeow');
 let kittens = api.kittens.get();
-```
+``` -->
 
 > Example Request Body
 
@@ -88,8 +87,7 @@ Please see our helpful guide: How to Verify and Address (and Why) for more infor
 
 
 ```shell
-curl "https://api.taxcloud.net/1.0/TaxCloud/VerifyAddress" \
-  -H "Authorization: meowmeowmeow"
+curl "https://api.taxcloud.net/1.0/TaxCloud/VerifyAddress"
 ```
 
 ```csharp
@@ -178,3 +176,12 @@ VerifyAddressResult.Zip5  |	string	|	 |  Optional
 <!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside> -->
+
+## Lookup
+
+
+
+## Authorized with Capture
+
+## Returned 
+
