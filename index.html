@@ -283,7 +283,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-3ab3facd.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-0b2711a7.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -312,7 +312,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#about-taxcloud" class="toc-h1 toc-link" data-title="About TaxCloud">About TaxCloud</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#the-taxcloud-api" class="toc-h2 toc-link" data-title="The TaxCloud API">The TaxCloud API</a>
@@ -334,7 +334,28 @@
                   <li>
                     <a href="#verify-address" class="toc-h2 toc-link" data-title="Verify Address">Verify Address</a>
                   </li>
+                  <li>
+                    <a href="#lookup" class="toc-h2 toc-link" data-title="Lookup">Lookup</a>
+                  </li>
+                  <li>
+                    <a href="#authorized-with-capture" class="toc-h2 toc-link" data-title="Authorized with Capture">Authorized with Capture</a>
+                  </li>
+                  <li>
+                    <a href="#returned" class="toc-h2 toc-link" data-title="Returned">Returned</a>
+                  </li>
               </ul>
+          </li>
+          <li>
+            <a href="#getting-fancy" class="toc-h1 toc-link" data-title="Getting Fancy">Getting Fancy</a>
+          </li>
+          <li>
+            <a href="#exemption-certificates" class="toc-h1 toc-link" data-title="Exemption Certificates">Exemption Certificates</a>
+          </li>
+          <li>
+            <a href="#taxability-codes-tics" class="toc-h1 toc-link" data-title="Taxability Codes (TICs)">Taxability Codes (TICs)</a>
+          </li>
+          <li>
+            <a href="#platform-partner-apis" class="toc-h1 toc-link" data-title="Platform Partner APIs">Platform Partner APIs</a>
           </li>
           <li>
             <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
@@ -589,7 +610,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
  -->
-<h1 id='about-taxcloud'>About TaxCloud</h1>
+<h1 id='introduction'>Introduction</h1>
 <p><a href="https://taxcloud.com" target="_blank">TaxCloud</a> is the internet&#39;s only free sales tax compliance service. We can provide TaxCloud at no cost to retailers because we are paid by the states to make sales tax compliance as easy as possible—it&#39;s just that simple.</p>
 
 <p>OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These &quot;Member States&quot; pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification.</p>
@@ -607,14 +628,19 @@ ID | The ID of the kitten to delete
 <p>If this call fails, API credentials are questionable.</p>
 
 <p>Our PING API is typically used to ensure API credentials are valid, and to ensure the networking &quot;stack&quot; between your systems and TaxCloud&#39;s systems are configured correctly to accommodate real-time communications.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.taxcloud.net/1.0/TaxCloud/Ping"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">const</span> <span class="n">req</span> <span class="p">=</span> <span class="err">''</span><span class="p">;</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.taxcloud.net/1.0/TaxCloud/Ping"</span>
 </code></pre></div>
+<!-- ```csharp
+const req = '';
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let kittens = api.kittens.get();
+``` -->
+
 <blockquote>
 <p>Example Request Body</p>
 </blockquote>
@@ -705,8 +731,7 @@ Remember — a happy kitten is an authenticated kitten!
 <aside class="notice">
 <strong>IMPORTANT</strong>: If VerifyAddress fails for any reason, you should proceed to Lookup using the customer-provided information.
 </aside>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.taxcloud.net/1.0/TaxCloud/VerifyAddress"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.taxcloud.net/1.0/TaxCloud/VerifyAddress"</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">const</span> <span class="n">req</span> <span class="p">=</span> <span class="err">''</span><span class="p">;</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
 
@@ -886,7 +911,7 @@ Remember — a happy kitten is an authenticated kitten!
 <!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside> -->
-<h1 id='guides'>Guides</h1><h2 id='getting-oriented-with-taxcloud'>Getting Oriented with TaxCloud</h2><h2 id='verify-an-address'>Verify an Address</h2><h2 id='lookup-sales-tax'>Lookup Sales Tax</h2><h2 id='order-completion'>Order Completion</h2><h2 id='returned-orders'>Returned Orders</h2><h2 id='pre-build-sdks'>Pre-build SDKs</h2><h1 id='errors'>Errors</h1>
+<h2 id='lookup'>Lookup</h2><h2 id='authorized-with-capture'>Authorized with Capture</h2><h2 id='returned'>Returned</h2><h1 id='getting-fancy'>Getting Fancy</h1><h1 id='exemption-certificates'>Exemption Certificates</h1><h1 id='taxability-codes-tics'>Taxability Codes (TICs)</h1><h1 id='platform-partner-apis'>Platform Partner APIs</h1><h1 id='guides'>Guides</h1><h2 id='getting-oriented-with-taxcloud'>Getting Oriented with TaxCloud</h2><h2 id='verify-an-address'>Verify an Address</h2><h2 id='lookup-sales-tax'>Lookup Sales Tax</h2><h2 id='order-completion'>Order Completion</h2><h2 id='returned-orders'>Returned Orders</h2><h2 id='pre-build-sdks'>Pre-build SDKs</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
