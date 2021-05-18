@@ -4,8 +4,9 @@
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link rel="icon" href="https://taxcloud.com/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>TaxCloud Developer Center</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -291,7 +292,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;csharp&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -302,8 +303,7 @@
       <img src="images/logo-1b109673.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="csharp">csharp</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
@@ -312,22 +312,50 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#about-taxcloud" class="toc-h1 toc-link" data-title="About TaxCloud">About TaxCloud</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#the-taxcloud-api" class="toc-h2 toc-link" data-title="The TaxCloud API">The TaxCloud API</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#taxcloud-api-credentials-is-there-a-developer-sandbox" class="toc-h2 toc-link" data-title="TaxCloud API Credentials — Is There a Developer Sandbox?">TaxCloud API Credentials — Is There a Developer Sandbox?</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#is-developer-support-available" class="toc-h2 toc-link" data-title="Is Developer Support Available?">Is Developer Support Available?</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ping" class="toc-h2 toc-link" data-title="Ping">Ping</a>
+                  </li>
+                  <li>
+                    <a href="#verify-address" class="toc-h2 toc-link" data-title="Verify Address">Verify Address</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-oriented-with-taxcloud" class="toc-h2 toc-link" data-title="Getting Oriented with TaxCloud">Getting Oriented with TaxCloud</a>
+                  </li>
+                  <li>
+                    <a href="#verify-an-address" class="toc-h2 toc-link" data-title="Verify an Address">Verify an Address</a>
+                  </li>
+                  <li>
+                    <a href="#lookup-sales-tax" class="toc-h2 toc-link" data-title="Lookup Sales Tax">Lookup Sales Tax</a>
+                  </li>
+                  <li>
+                    <a href="#order-completion" class="toc-h2 toc-link" data-title="Order Completion">Order Completion</a>
+                  </li>
+                  <li>
+                    <a href="#returned-orders" class="toc-h2 toc-link" data-title="Returned Orders">Returned Orders</a>
+                  </li>
+                  <li>
+                    <a href="#pre-build-sdks" class="toc-h2 toc-link" data-title="Pre-build SDKs">Pre-build SDKs</a>
                   </li>
               </ul>
           </li>
@@ -343,184 +371,522 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p><a href="https://taxcloud.com">TaxCloud</a> is the internet&#39;s only free sales tax compliance service. We can provide TaxCloud at no cost to retailers because we are paid by the states to make sales tax compliance as easy as possible—it&#39;s just that simple.</p>
+        <!-- # Introduction
 
-<p>OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These &quot;Member States&quot; pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+[TaxCloud](https://taxcloud.com) is the internet's only free sales tax compliance service. We can provide TaxCloud at no cost to retailers because we are paid by the states to make sales tax compliance as easy as possible—it's just that simple.
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These "Member States" pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification. -->
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<!-- # Authentication
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+> To authorize, use this code:
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+```ruby
+require 'kittn'
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+```
 
-<p><code>Authorization: meowmeowmeow</code></p>
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+```
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl "api_endpoint_here" \
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+```
+
+> Make sure to replace `meowmeowmeow` with your API key.
+
+Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+
+Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: meowmeowmeow`
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+# Kittens
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+## Get All Kittens
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.get
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.get()
+```
+
+```shell
+curl "http://example.com/api/kittens" \
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let kittens = api.kittens.get();
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Fluffums",
+    "breed": "calico",
+    "fluffiness": 6,
+    "cuteness": 7
+  },
+  {
+    "id": 2,
+    "name": "Max",
+    "breed": "unknown",
+    "fluffiness": 5,
+    "cuteness": 10
+  }
+]
+```
+
+This endpoint retrieves all kittens.
+
+### HTTP Request
+
+`GET http://example.com/api/kittens`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+include_cats | false | If set to true, the result will also include cats.
+available | true | If set to false, the result will include kittens that have already been adopted.
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+
+## Get a Specific Kitten
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.get(2)
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.get(2)
+```
+
+```shell
+curl "http://example.com/api/kittens/2" \
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let max = api.kittens.get(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "name": "Max",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+This endpoint retrieves a specific kitten.
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+
+### HTTP Request
+
+`GET http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to retrieve
+
+## Delete a Specific Kitten
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.delete(2)
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.delete(2)
+```
+
+```shell
+curl "http://example.com/api/kittens/2" \
+  -X DELETE \
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let max = api.kittens.delete(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "deleted" : ":("
+}
+```
+
+This endpoint deletes a specific kitten.
+
+### HTTP Request
+
+`DELETE http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to delete
+ -->
+<h1 id='about-taxcloud'>About TaxCloud</h1>
+<p><a href="https://taxcloud.com" target="_blank">TaxCloud</a> is the internet&#39;s only free sales tax compliance service. We can provide TaxCloud at no cost to retailers because we are paid by the states to make sales tax compliance as easy as possible—it&#39;s just that simple.</p>
+
+<p>OK, it is a little more complicated than that, but that is our goal. TaxCloud has achieved Certified Service Provider designation in 25 states. These &quot;Member States&quot; pay for our service so filers into these states don’t have to. There are another 20 states that collect sales and use tax, and our TaxCloud API supports accurate tax determination in those states as well. However, the filers themselves pay TaxCloud for the transactions into these states that have not yet enacted provisions for certification.</p>
+<h2 id='the-taxcloud-api'>The TaxCloud API</h2>
+<p>The TaxCloud API is organized around Representational State Transfer (REST). Our API has predictable resource oriented endpoints, accepts form encoded request bodies, and returns JSON-encoded responses. TaxCloud also supports Simple Object Access Protocol (SOAP) with identical API signatures.</p>
+<h2 id='taxcloud-api-credentials-is-there-a-developer-sandbox'>TaxCloud API Credentials — Is There a Developer Sandbox?</h2>
+<p>No. In our experience, so-called &quot;developer sandbox&quot; environments tend to behave differently than live production environments. Rather than operate a duplicate sandbox environment that could behave differently and require configuration changes between development and production use, all API calls to TaxCloud are received and processed in our live production environment.</p>
+
+<p>Having said that, all API credentials (API ID + API KEY) are issued as test API credentials.</p>
+
+<p>In TaxCloud, each &quot;store&quot; in your TaxCloud account is issued unique API credentials. You can have as many stores (and associated sets of API credentials) as you may need. Once you have completed your development and testing, you can return to the <a href="https://taxcloud.com/go/stores/" target="_blank">TaxCloud &gt; Settings &gt; Stores</a> area and set a single store to GO LIVE. Once a set of API credentials are LIVE, all transactions will be included in period sales tax reports and returns. Best practice would be to have at least two stores: one LIVE for your production retail or point-of-sale system, and one NOT LIVE for development and testing.</p>
+<h2 id='is-developer-support-available'>Is Developer Support Available?</h2>
+<p>Our Customer Success Team can help if you are having issues with your API credentials or if you have questions about API responses, but they cannot write your software. Email support is available via service@taxcloud.net.</p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='ping'>Ping</h2>
+<p>If this call fails, API credentials are questionable.</p>
+
+<p>Our PING API is typically used to ensure API credentials are valid, and to ensure the networking &quot;stack&quot; between your systems and TaxCloud&#39;s systems are configured correctly to accommodate real-time communications.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.taxcloud.net/1.0/TaxCloud/Ping"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">const</span> <span class="n">req</span> <span class="p">=</span> <span class="err">''</span><span class="p">;</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Request Body</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiLoginID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.taxcloud.net/1.0/TaxCloud/Ping</code></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Name</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>apiKey</td>
+<td>string</td>
+<td>Find your API KEY via your <a href="https://taxcloud.com/go/stores/" target="_blank">store</a></td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>apiLoginID</td>
+<td>string</td>
+<td>Find your API ID via your <a href="https://taxcloud.com/go/stores/" target="_blank">store</a></td>
 </tr>
 </tbody></table>
 
-<aside class="success">
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"ResponseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int32"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>The following HTTP status codes may be returned, optionally with a response resource.</p>
+
+<table><thead>
+<tr>
+<th>Status code</th>
+<th>Description</th>
+<th>Resource</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>PingResponse</td>
+</tr>
+</tbody></table>
+<h3 id='pingresponse-resource-properties'>PingResponse Resource Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Additional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Messages[]</td>
+<td>array of string</td>
+<td>Optional array of messages related to the response.</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>ResponseType</td>
+<td>int32</td>
+<td>Response Type includes: <ul><li>0 = Error. likely invalid credentials</li><li>1 = Warning.  Something went wrong.</li><li>2 = Informational. Something could be better</li><li>3 = Success!  You did it!</li></td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
+</aside> -->
+<h2 id='verify-address'>Verify Address</h2>
+<p>Verify (hopefully improve) a customer provided delivery address. <strong>VERY IMPORTANT</strong> for proper tax jurisdiction assessment.</p>
+
+<p>If you use a domestic common carrier (shipper), you may already have address verification implemented and available. However, if you are not already performing address verification sufficient to determine the a complete 9-digit zip code (e.g., 06851-5715) then our VerifyAddress can fill that gap.</p>
+
+<p>Please see our helpful guide: How to Verify and Address (and Why) for more information.</p>
+
+<aside class="notice">
+<strong>IMPORTANT</strong>: If VerifyAddress fails for any reason, you should proceed to Lookup using the customer-provided information.
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.taxcloud.net/1.0/TaxCloud/VerifyAddress"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">const</span> <span class="n">req</span> <span class="p">=</span> <span class="err">''</span><span class="p">;</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
 </code></pre></div>
+<blockquote>
+<p>Example Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Zip4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Zip5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiLoginID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.taxcloud.net/1.0/TaxCloud/VerifyAddress</code></p>
+<h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Additional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Address1</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Address2</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>City</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>State</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Zip4</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>Zip5</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+<td>Find your API KEY via your <a href="https://taxcloud.com/go/stores/" target="_blank">store</a></td>
+<td></td>
+</tr>
+<tr>
+<td>apiLoginID</td>
+<td>string</td>
+<td>Find your API ID via your <a href="https://taxcloud.com/go/stores/" target="_blank">store</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nl">"VerifyAddressResult"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ErrDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ErrNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Zip4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Zip5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
+</span></code></pre></div><h3 id='response-2'>Response</h3>
+<p>The following HTTP status codes may be returned, optionally with a response resource.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Status code</th>
 <th>Description</th>
+<th>Resource</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>200</td>
+<td>OK</td>
+<td>VerifyAddressResponse</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='verifyaddressresponse-resource-properties'>VerifyAddressResponse Resource Properties</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
+<th>Type</th>
 <th>Description</th>
+<th>Additional</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>VerifyAddressResult</td>
+<td>object</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.Address1</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.Address2</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.City</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.ErrDescription</td>
+<td>string</td>
+<td>If null, there were no errors.</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.ErrNumber</td>
+<td>string</td>
+<td>Our response for VerifyAddress is a little odd. If ErrNumber is &quot;0&quot; then there was no error, and ErrDescription will be null. <strong>IMORTANT</strong> Even if there are errors (the address couldn&#39;t be validated/improved) <strong>YOU SHOULD PROCEED WITH THE CUSTOMER PROVIDED ADDRESS.</strong></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.State</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.Zip4</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>VerifyAddressResult.Zip5</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+
+<!-- <aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside> -->
+<h1 id='guides'>Guides</h1><h2 id='getting-oriented-with-taxcloud'>Getting Oriented with TaxCloud</h2><h2 id='verify-an-address'>Verify an Address</h2><h2 id='lookup-sales-tax'>Lookup Sales Tax</h2><h2 id='order-completion'>Order Completion</h2><h2 id='returned-orders'>Returned Orders</h2><h2 id='pre-build-sdks'>Pre-build SDKs</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
@@ -583,8 +949,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="csharp">csharp</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
